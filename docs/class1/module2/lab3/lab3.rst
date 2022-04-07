@@ -38,10 +38,14 @@ Modify the WAF blocking page
   * In VSCode, commit and push.
 
   .. image:: ../pictures/lab3/commit.png
+     :scale: 50
      :align: center
+     
 
   .. image:: ../pictures/lab3/push.png
+     :scale: 50
      :align: center
+
 
 * Make a quick look in your GitHub repo, dev branch, you should see your change here (the reponse blocking page change)
 
