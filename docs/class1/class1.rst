@@ -1,5 +1,5 @@
-Class1 - Deploy workshop environment in Azure
-#############################################
+Class1 - Learn DevSecOps in Azure with Terraform and GitHub
+###########################################################
 
 Lab Maintainers:
 

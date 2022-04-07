@@ -1,57 +1,81 @@
-Lab 1 - Expose the private Arcadia application
-##############################################
+Lab 1 - Apply Shape Bot Defense protection
+##########################################
 
-Create the networking objects
-*****************************
+In the first module, we created and applied a WAAP policy with the Basic Bot Protection. This protection is based on Bot Signature only. There is no JS or challenge sent to the source.
 
-For this lab, we will use the following object naming convention
+**F5XC Shape Bot Protection** is the connector (similar to Shape IBD on BIG-IP) in order to inject the famous Shape JS and collect device signals. Then, Shape infrastructure allows or denies access to the application
 
-.. table:: Naming Convention
-   :widths: auto
+.. image:: ../pictures/lab1/IBD.png
+   :align: center
 
-   ===============    ========================================================================================
-   Object               Value
-   ===============    ========================================================================================
-   HTTP LB              **EMEA-SE** tenant : https://arcadia-<se_name>.emea-ent.f5demos.com
-                        
-                        **F5-SALES-PUBLIC** tenant : https://arcadia-<student_number>.sales-public.f5demos.com
+|
 
-                        Enable HTTPS AutoCert
+Enable Shape Bot Protection on protected endpoints
+**************************************************
 
-   Origin Pool          Select ``IP Address of OP on Given site``
+In the previous lab, we managed to query and buy stocks from a CURL command. This CURL targeted the endpoint ``/trading/rest/buy_stocks.php`` and bought F5 stocks.
 
-                        IP ``172.21.2.4``
-   
-                        Site for **EMEA-SE tenant** ``demo-waap-emea``
+Now, let's protect this endpoint so that the CURL will be blocked, but not the legetimate requests from a browser.
 
-                        Site for **F5-SALES-PUBLIC tenant** ``emea-azure-waap``
-   
-                        Select ``Inside Network``
+* Edit your HTTPS LB from lab 1 (HTTPS LB on RE only) - Or any other if you prefer.
+* Enable ``Bot Defense``
+* Select US (EU not yet available) and ``Show Advanced Fields``
+* Extend ``Timeout`` to 1500 (because pipelines located in US)
 
-                        Port 80
+* Create a new ``Bot Defense Policy``
+* Create a new ``Protected App Endpoints``
+* Add a new item and configure as below. This is the Buy Stock URL.
 
-                        NO TLS
-   ===============    ========================================================================================
+|
 
-* Check you are in your Namespace
-* Create the Origin Pool targeting Arcadia private IP on given site
+  .. image:: ../pictures/lab1/rule.png
+     :align: center
+     :scale: 50%
 
-  .. image:: ../pictures/lab1/OP.png
+* Save and keep default settings for the JS injection
+* Save and Apply your HTTP LB
+
+|
+
+Test your Bot Defense Protection
+********************************
+
+* Connect to your HTTPS LB with a browser (incognito - private mode) and buy new stocks
+* Now, run the below CURL 
+
+  * For Mac Users
+
+  .. code-block:: bash
+
+    curl 'https://<TO_BE_REPLACED_BY_YOUR_FQDN>/trading/rest/buy_stocks.php' \
+    -H 'authorization: Basic YWRtaW46aWxvdmVibHVl' \
+    -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36' \
+    -H 'content-type: application/json; charset=UTF-8' \
+    -H 'x-requested-with: XMLHttpRequest' \
+    --data-raw '{"trans_value":330,"qty":2,"company":"FFIV","action":"buy","stock_price":165}' \
+    --compressed    
+
+  * For Windows Users
+
+  .. code-block:: bash
+
+    curl --location --request POST "https://<TO_BE_REPLACED_BY_YOUR_FQDN>/trading/rest/buy_stocks.php" --header "authorization: Basic YWRtaW46YWRtaW4uRjVkZW1vLmNvbQ==" --header "user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36" --header "content-type: application/json; charset=UTF-8" --header "x-requested-with: XMLHttpRequest" --header "Cookie: 3ba01=3b7f08b7c6ff531030e6f43656582f0b000004c246698307ddbe" --data-raw "{\"trans_value\": 330,\"qty\": 2,\"company\": \"FFIV\",\"action\": \"buy\",\"stock_price\": 165}"
+
+
+* The call should be blocked
+
+|
+
+Check your analytics
+********************
+
+* Now, go to your LB ``Security Analytics``
+* Go to ``Bot Traffic overview`` and check if you see a Human and Bot event logs
+
+  .. image:: ../pictures/lab1/analytics.png
      :align: center
 
-* Create the HTTPS LB
-* Assigned the  WAAP policy created in previous LAB
 
+.. warning:: End of the SE/Partner/Customer F5XC WAAP foundational
 
-
-|
-
-Test your Anycast HTTPS LB
-**************************
-
-* Check your Arcadia application is exposed and reachable from the F5XC Global Network
-* Send Attacks as previous lab
-
-|
-
-.. note:: In this lab, you created a Multi-Cloud architecture where the application resides in a private location. And SecOps don't have to know where is the app and how to reach this app. NetOps created the relevant Network Infrastrucute (Mesh Node) and SecOps just consume the objects created by NetOps.
+   
