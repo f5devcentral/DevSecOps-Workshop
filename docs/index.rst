@@ -32,12 +32,12 @@ It covers:
 
 Pre-reqs:
 
-  * An Azure tenant with the subscription
-  * Azure CLI
-  * Kubectl CLI and/or k8s tools like Lens/k9s
-  * Nginx App Protect license
-  * Terraform
-  * Docker desktop
+* An Azure tenant with the subscription
+* Azure CLI
+* Kubectl CLI and/or k8s tools like Lens/k9s
+* Nginx App Protect license
+* Terraform
+* Docker desktop
 
 .. toctree::
    :maxdepth: 3

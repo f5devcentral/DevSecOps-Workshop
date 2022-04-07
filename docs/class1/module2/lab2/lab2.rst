@@ -7,8 +7,8 @@ As a reminder (kubectl get services), the FrontEnd service is called ``sentence-
 
 In your Github repo, check the files
 
-  * nginx-nap/etc/nginx/upstream.d/http-sentence.conf -> this is the upstream (the sentence-frontend-nginx service)
-  * nginx-nap/etc/nginx/vhosts.d/http-sentence.conf -> this is the vhosts (choose any fqdn for your lab)
+* nginx-nap/etc/nginx/upstream.d/http-sentence.conf -> this is the upstream (the sentence-frontend-nginx service)
+* nginx-nap/etc/nginx/vhosts.d/http-sentence.conf -> this is the vhosts (choose any fqdn for your lab)
 
 We will have a look later on the NAP policy tree
 
@@ -25,16 +25,16 @@ In this module, we will not use any CI tool. You will be the CI tool and run the
 
 First, adapt the Terraform with your environment information
 
-  * Modify the plan accordingly so that the image is pulled from your private repository (line 36)
-  * and also point to your kubeconfig context (line 3)
+* Modify the plan accordingly so that the image is pulled from your private repository (line 36)
+* and also point to your kubeconfig context (line 3)
 
 Go to the ``terraform`` folder and execute the terraform plan
 
-  .. code-block:: bash
+.. code-block:: bash
 
-    terraform init
-    terraform plan -auto-approve
-    terraform apply -auto-approve
+  terraform init
+  terraform plan -auto-approve
+  terraform apply -auto-approve
 
 |
 

@@ -1,3 +1,3 @@
-Lab 1 - Change the WAF blocking page
-####################################
+Lab 1 - Connect to Terraform Cloud
+##################################
 

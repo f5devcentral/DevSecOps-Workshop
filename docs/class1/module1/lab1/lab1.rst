@@ -53,7 +53,7 @@ This terraform creates 3 Resource Groups:
 * 2 RG for the AKS (xxx-ks-xxx-rg + another one created automatically by Azure)
 * 1 RG for the ACR (rg-tf-xxx-acr)
 
-.. image:: ../pictures/lab1/rg.png
+.. image:: ../pictures/lab1/RG.png
    :align: center
 
 |

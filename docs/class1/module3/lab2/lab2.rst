@@ -1,3 +1,3 @@
-Lab 2 - Disable a WAF signature
-###############################
+Lab 2 - Create your pipeline
+############################
 
