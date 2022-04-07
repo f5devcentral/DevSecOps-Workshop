@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 1 - Expose the private Arcadia application through the Mesh Node only (CE-Only)</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 1 - Expose the private Arcadia application through the Mesh Node only (CE-Only)"/>
+  <meta name="product" content="Workshop Volterra 10x"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2022-04-01 08:43:29"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="Workshop Volterra 10x" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 1 - Expose the private Arcadia application through the Mesh Node only (CE-Only) &#8212; Workshop Volterra 10x  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/index.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Class2 - F5XC WAAP Advanced Features" href="../../../class2/class2.html" />
+    <link rel="prev" title="Module 3 - Use Case 3 - Protect an app running in Public Cloud only" href="../module3.html" /> 
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      <!-- javascript code to maintain the sidebar scroll positon when loaded -->
+      <script type="text/javascript">
+        $(function() {
+          if (localStorage.tempScrollTop) {
+            $('#sidebar').scrollTop(localStorage.tempScrollTop);
+          }
+        });
+        $('#sidebar').on("scroll", function() {
+          localStorage.setItem("tempScrollTop", $('#sidebar').scrollTop());
+        });
+      </script>
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>Workshop Volterra 10x  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../class1.html">Class1 - F5XC WAAP Use Cases</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../module1/module1.html">Module 1 - Use Case 1 - Expose public application and protect it with F5XC WAAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../module2/module2.html">Module 2 - Use Case 2 - Expose a private application and protect it with F5XC WAAP</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../module3.html">Module 3 - Use Case 3 - Protect an app running in Public Cloud only</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Lab 1 - Expose the private Arcadia application through the Mesh Node only (CE-Only)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class2/class2.html">Class2 - F5XC WAAP Advanced Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class3/class3.html">Class3 - Volterra Workshop for Modern App Specialists</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 1 - Expose the private Arcadia application through the Mesh Node only (CE-Only)</a><ul>
+<li><a class="reference internal" href="#create-a-http-lb-and-expose-it-on-the-mesh-node-only">Create a HTTP LB and expose it on the Mesh Node only</a></li>
+<li><a class="reference internal" href="#modify-you-host-file-entries">Modify you Host file entries</a></li>
+<li><a class="reference internal" href="#test-your-ce-only-lab">Test your CE-Only lab</a></li>
+</ul>
+</li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../../index.html">Workshop Volterra 10x</a>
+              &gt; <a href="../../class1.html">Class1 - F5XC WAAP Use Cases</a>
+              &gt; <a href="../module3.html">Module 3 - Use Case 3 - Protect an app running in Public Cloud only</a>
+
+          <span class="right">
+             <a href="../../../_sources/class1/module3/lab1/lab1.rst.txt" rel="nofollow">Source</a> |
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-1-expose-the-private-arcadia-application-through-the-mesh-node-only-ce-only">
+<h1>Lab 1 - Expose the private Arcadia application through the Mesh Node only (CE-Only)<a class="headerlink" href="#lab-1-expose-the-private-arcadia-application-through-the-mesh-node-only-ce-only" title="Permalink to this headline">¶</a></h1>
+<p>For this lab, as the Mesh Node is shared between all SE/Students, we will use a <code class="docutils literal notranslate"><span class="pre">fake</span> <span class="pre">FQDN/DNS</span> <span class="pre">for</span> <span class="pre">your</span> <span class="pre">LB</span></code>. There is one DNS provided by Azure, but so that all of SE/Students can push their own HTTP LB, each of you will use a fake FQDN for the LB. You will add a new entry in your <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">file</span></code> in order to target the Azure Mesh Node LB public IP addess.</p>
+<p>FYI, the public Azure IP address of the node is:</p>
+<ul class="simple">
+<li>For <strong>EMEA-SE tenant</strong> <code class="docutils literal notranslate"><span class="pre">20.224.0.208</span></code></li>
+<li>For <strong>F5-SALES-PUBLIC tenant</strong> <code class="docutils literal notranslate"><span class="pre">20.86.17.42</span></code></li>
+</ul>
+<div class="section" id="create-a-http-lb-and-expose-it-on-the-mesh-node-only">
+<h2>Create a HTTP LB and expose it on the Mesh Node only<a class="headerlink" href="#create-a-http-lb-and-expose-it-on-the-mesh-node-only" title="Permalink to this headline">¶</a></h2>
+<p>If you understand correctly this use case, we want the WAAP policy applied on a HTTP LB exposed on the Mesh Node in Azure only. We don’t want the users/consumers to transit through the F5XC Global Network.</p>
+<ul>
+<li><p class="first">Create a new <code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">LB</span></code> - NOT A HTTPS LB.</p>
+</li>
+<li><p class="first">For the FQDN, use this convention <code class="docutils literal notranslate"><span class="pre">arcadia-&lt;se_name_or_student_id&gt;-ceonly.fakefqdn.azure</span></code></p>
+</li>
+<li><p class="first">Select the Origin Pool used and created in the previous lab. The private Origin Pool.</p>
+</li>
+<li><p class="first">Expose this LB on <code class="docutils literal notranslate"><span class="pre">dierick-demowaap</span></code> site</p>
+<ul class="simple">
+<li>In VIP Configuration, enable <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Advanced</span> <span class="pre">Fields</span></code></li>
+<li>Advertise Custom</li>
+<li>Create a new custom config (show advanced fields)</li>
+<li>Select the <code class="docutils literal notranslate"><span class="pre">dierick-demowaap</span></code> site and expose on <code class="docutils literal notranslate"><span class="pre">outside</span></code> interface (the one exposed by the Azure LB)</li>
+</ul>
+<img alt="../../../_images/custom-vip.png" class="align-center" src="../../../_images/custom-vip.png" />
+</li>
+<li><p class="first">Assign your WAAP policy</p>
+</li>
+</ul>
+</div>
+<div class="section" id="modify-you-host-file-entries">
+<h2>Modify you Host file entries<a class="headerlink" href="#modify-you-host-file-entries" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Modify your host file in order to target the right Azure IP address (look at above which address to use based on your Tenant) for the FQDN created <code class="docutils literal notranslate"><span class="pre">arcadia-&lt;se_name&gt;-ceonly.fakefqdn.azure</span></code></li>
+</ul>
+</div>
+<div class="section" id="test-your-ce-only-lab">
+<h2>Test your CE-Only lab<a class="headerlink" href="#test-your-ce-only-lab" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>As previous labs, connect to your LB and send attacks</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As you can notice, in the 3 use cases, we keep consistancy with one WAAP policy whereever the LB or the App reside.</p>
+</div>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="../module3.html" title="Module 3 - Use Case 3 - Protect an app running in Public Cloud only" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="../../../class2/class2.html" title="Class2 - F5XC WAAP Advanced Features" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../../_static/js/index.js"></script>
+  <script src="../../../_static/js/jquery.appear.js"></script>
+  <script src="../../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

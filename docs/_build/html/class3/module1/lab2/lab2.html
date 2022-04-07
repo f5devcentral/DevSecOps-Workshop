@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 2 - Deploy the app in Azure AKS and expose it on Volterra Global Network</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 2 - Deploy the app in Azure AKS and expose it on Volterra Global Network"/>
+  <meta name="product" content="Workshop Volterra 10x"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2022-04-01 08:43:29"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="Workshop Volterra 10x" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 2 - Deploy the app in Azure AKS and expose it on Volterra Global Network &#8212; Workshop Volterra 10x  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/index.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Lab 3 - Deploy Colors microservice on premises and expose it" href="../lab3/lab3.html" />
+    <link rel="prev" title="Lab 1 - The Sentence Application" href="../lab1/lab1.html" /> 
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      <!-- javascript code to maintain the sidebar scroll positon when loaded -->
+      <script type="text/javascript">
+        $(function() {
+          if (localStorage.tempScrollTop) {
+            $('#sidebar').scrollTop(localStorage.tempScrollTop);
+          }
+        });
+        $('#sidebar').on("scroll", function() {
+          localStorage.setItem("tempScrollTop", $('#sidebar').scrollTop());
+        });
+      </script>
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>Workshop Volterra 10x  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../class1/class1.html">Class1 - F5XC WAAP Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class2/class2.html">Class2 - F5XC WAAP Advanced Features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../class3.html">Class3 - Volterra Workshop for Modern App Specialists</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../module1.html">Module 1</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../lab1/lab1.html">Lab 1 - The Sentence Application</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Lab 2 - Deploy the app in Azure AKS and expose it on Volterra Global Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab3/lab3.html">Lab 3 - Deploy Colors microservice on premises and expose it</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab4/lab4.html">Lab 4 - Add WAAP protection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab5/lab5.html">Lab 5 - Add GSLB for Front End Service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 2 - Deploy the app in Azure AKS and expose it on Volterra Global Network</a><ul>
+<li><a class="reference internal" href="#deploy-an-aks-in-azure">Deploy an AKS in Azure</a></li>
+<li><a class="reference internal" href="#publish-the-app-without-colors-microservice">Publish the App without Colors microservice</a></li>
+<li><a class="reference internal" href="#expose-the-app-with-f5-distributed-cloud">Expose the app with F5 Distributed Cloud</a><ul>
+<li><a class="reference internal" href="#deploy-a-new-azure-vnet-site">Deploy a new Azure Vnet Site</a></li>
+<li><a class="reference internal" href="#discover-the-services">Discover the services</a></li>
+<li><a class="reference internal" href="#create-an-global-load-balancer-and-expose-sentence-app">Create an Global Load Balancer and expose Sentence App</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../../index.html">Workshop Volterra 10x</a>
+              &gt; <a href="../../class3.html">Class3 - Volterra Workshop for Modern App Specialists</a>
+              &gt; <a href="../module1.html">Module 1</a>
+
+          <span class="right">
+             <a href="../../../_sources/class3/module1/lab2/lab2.rst.txt" rel="nofollow">Source</a> |
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-2-deploy-the-app-in-azure-aks-and-expose-it-on-volterra-global-network">
+<h1>Lab 2 - Deploy the app in Azure AKS and expose it on Volterra Global Network<a class="headerlink" href="#lab-2-deploy-the-app-in-azure-aks-and-expose-it-on-volterra-global-network" title="Permalink to this headline">¶</a></h1>
+<img alt="../../../_images/archi-lab2.png" class="align-center" src="../../../_images/archi-lab2.png" />
+<div class="section" id="deploy-an-aks-in-azure">
+<h2>Deploy an AKS in Azure<a class="headerlink" href="#deploy-an-aks-in-azure" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Check your AZ CLI is up and running in the right Tenant (F5 Sales) and Subscription (f5-AZR_4261_SALES_EMEA_SE - 1005fe30-e19e-4091-8480-8b61ecb8106e).</p>
+<ul class="simple">
+<li>az account list</li>
+</ul>
+<div class="last highlight-JSON notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="nt">&quot;cloudName&quot;</span><span class="p">:</span> <span class="s2">&quot;AzureCloud&quot;</span><span class="p">,</span>
+<span class="nt">&quot;homeTenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;e569f29e-b098-4cea-b6f0-48fa8532d64a&quot;</span><span class="p">,</span>
+<span class="hll"><span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1005fe30-e19e-4091-8480-8b61ecb8106e&quot;</span><span class="p">,</span>
+</span><span class="hll"><span class="nt">&quot;isDefault&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class="nt">&quot;managedByTenants&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;dd3dfd2f-6a3b-40d1-9be0-bf8327d81c50&quot;</span>
+  <span class="p">}</span>
+<span class="p">],</span>
+<span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;f5-AZR_4261_SALES_EMEA_SE&quot;</span><span class="p">,</span>
+<span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
+<span class="nt">&quot;tenantId&quot;</span><span class="p">:</span> <span class="s2">&quot;e569f29e-b098-4cea-b6f0-48fa8532d64a&quot;</span><span class="p">,</span>
+<span class="nt">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;M.Dierick@F5.com&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<ul>
+<li><p class="first">If needed, you can switch to the EMEA-SE subs : az account set –subscription “f5-AZR_4261_SALES_EMEA_SE”</p>
+</li>
+<li><p class="first">Clone this Git to your laptop (dev branch) : <a class="reference external" href="https://github.com/f5devcentral/volterra-workshop-10x">https://github.com/f5devcentral/volterra-workshop-10x</a></p>
+</li>
+<li><p class="first">In the <code class="docutils literal notranslate"><span class="pre">dev</span></code> branch, enter to the folder <code class="docutils literal notranslate"><span class="pre">labs-content/class3/terraform</span></code></p>
+</li>
+<li><p class="first">Modify <code class="docutils literal notranslate"><span class="pre">variables.tf</span></code> according your project.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Volterra does not support objects &gt; 64 characters. So, use short name in your prefix and cluster name. 10 characters max per variable.</p>
+</div>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>variable &quot;resource_prefix&quot; {
+default = &quot;Matt&quot;
+}
+
+variable &quot;cluster_name&quot; {
+default     = &quot;akscluster&quot;
+description = &quot;K8S Cluster for Matt&quot;
+}
+
+variable &quot;location&quot; {
+default     = &quot;westeurope&quot;
+description = &quot;The Azure Region in which all resources in this example should be provisioned&quot;
+}
+
+variable &quot;vm_size&quot; {
+default     = &quot;Standard_B2ms&quot;
+description = &quot;2 vpus, 8 GiB memory&quot;
+}
+</pre></div>
+</div>
+</li>
+<li><p class="first">Deploy your Terraform plan</p>
+<div class="highlight-Terminal notranslate"><div class="highlight"><pre><span></span>terraform init
+terraform plan
+terraform apply
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Do not close your terminal, because the outcomes will be used in the next step to download your kubeconfig</p>
+</div>
+</li>
+<li><p class="first">Get your kubeconfig file from yoru Azure AKS :</p>
+<div class="highlight-Terminal notranslate"><div class="highlight"><pre><span></span>az aks get-credentials --resource-group &lt;YOUR-RG&gt; --name &lt;YOUR_CLUSTER_NAME&gt; --file kubeconfig-myname
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="publish-the-app-without-colors-microservice">
+<h2>Publish the App without Colors microservice<a class="headerlink" href="#publish-the-app-without-colors-microservice" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Use your favorite k8s client (kubectl, Lens …) and connect to your cluster</li>
+<li>Deploy the 2 manifests to publish the sentence app on your AKS<ul>
+<li>Deploy labs-content/class3/k8s-deployments/aks-sentence-deployment.yaml</li>
+<li>Deploy labs-content/class3/k8s-deployments/aks-sentence-deployment-nginx.yaml</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Wait few seconds, and try to connect to the Azure LB created by the manifest</p>
+</div>
+<img alt="../../../_images/colors-only.png" class="align-center" src="../../../_images/colors-only.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="expose-the-app-with-f5-distributed-cloud">
+<h2>Expose the app with F5 Distributed Cloud<a class="headerlink" href="#expose-the-app-with-f5-distributed-cloud" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>DELETE the <code class="docutils literal notranslate"><span class="pre">labs-content/class3/k8s-deployments/aks-sentence-deployment-nginx.yaml</span></code> manifest so that we can now push the same <code class="docutils literal notranslate"><span class="pre">without</span></code> a LB</li>
+<li>PUSH the <code class="docutils literal notranslate"><span class="pre">labs-content/class3/k8s-deployments/aks-sentence-deployment-nginx-private.yaml</span></code> manifest</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Check the LB service is deleted. If not, delete it manually.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Now, Sentence app is not published externally. A voltNode is required to access the app.</p>
+</div>
+<div class="section" id="deploy-a-new-azure-vnet-site">
+<h3>Deploy a new Azure Vnet Site<a class="headerlink" href="#deploy-a-new-azure-vnet-site" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">First, in Azure Portal, create a new <code class="docutils literal notranslate"><span class="pre">Subnet</span></code> in your Vnet. The Terraform only created one Subnet (10.240.0.0/16). This subnet is our private subnet.</p>
+<ul class="simple">
+<li>Create a new <code class="docutils literal notranslate"><span class="pre">subnet</span></code> in the same Vnet (10.241.0.0/16). Name it <code class="docutils literal notranslate"><span class="pre">aks-subnet-public</span></code>.</li>
+</ul>
+</li>
+<li><p class="first">Deploy a Azure VNET Volterra Node (Dual NIC) and assign the existing private and public subnets from your AKS Vnet.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The resource group must be a new resourve group. You can’t use an existing one.</p>
+</div>
+<img alt="../../../_images/azure-site.png" class="align-center" src="../../../_images/azure-site.png" />
+<img alt="../../../_images/subnet.png" class="align-center" src="../../../_images/subnet.png" />
+<ul class="simple">
+<li>For the Cloud Credentials, select <code class="docutils literal notranslate"><span class="pre">azure-emea-se</span></code></li>
+<li>Paste your public SSH key in case you need to connect to it for troubleshooting</li>
+</ul>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">Apply</span></code> the Azure Vnet Site</p>
+</li>
+<li><p class="first">WAIT and <code class="docutils literal notranslate"><span class="pre">upgrade</span></code> the node from the VotlConsole if required.</p>
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="discover-the-services">
+<h3>Discover the services<a class="headerlink" href="#discover-the-services" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Create a service discovery</p>
+<ul class="simple">
+<li>Select your site, select <code class="docutils literal notranslate"><span class="pre">site</span> <span class="pre">local</span> <span class="pre">inside</span> <span class="pre">network</span></code> and upload your kubeconfig file</li>
+<li>In <code class="docutils literal notranslate"><span class="pre">VIP</span> <span class="pre">Publishing</span> <span class="pre">Configuration</span> <span class="pre">settings</span></code>, Don’t forget to <code class="docutils literal notranslate"><span class="pre">publish</span> <span class="pre">fully</span> <span class="pre">qualified</span> <span class="pre">domain</span> <span class="pre">to</span> <span class="pre">VIP</span> <span class="pre">mapping</span></code></li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">There is a known bug here, this can take up to 15 minutes to display the services.</p>
+</div>
+<img alt="../../../_images/sd.png" class="align-center" src="../../../_images/sd.png" />
+</li>
+<li><p class="first">You should see all services + nginx as a nodeport</p>
+<img alt="../../../_images/sd-ok.png" class="align-center" src="../../../_images/sd-ok.png" />
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="create-an-global-load-balancer-and-expose-sentence-app">
+<h3>Create an Global Load Balancer and expose Sentence App<a class="headerlink" href="#create-an-global-load-balancer-and-expose-sentence-app" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Create an Origin Pool with Nginx Frontend webserver as a member</p>
+<ul class="simple">
+<li>Select k8s service type</li>
+<li>Enter service name (copy paste from service discovery)</li>
+<li>Select Inside network</li>
+<li>Port 80 (port of the service in K8S)</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Team discussion : How does Volterra manage to find the right back-end pool member (analogy to BIG-IP) ??? Check the LB and origin pool status.</p>
+</div>
+</li>
+<li><p class="first">Create an LB to expose the Nginx Frontend webserver</p>
+<ul class="simple">
+<li>Domain : sentence-&lt;myname&gt;.emea-ent.f5demos.com</li>
+<li>HTTPS auto-cert</li>
+<li>Select your Origin Pool</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Test your deployment</p>
+</div>
+</div>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="../lab1/lab1.html" title="Lab 1 - The Sentence Application" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="../lab3/lab3.html" title="Lab 3 - Deploy Colors microservice on premises and expose it" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../../_static/js/index.js"></script>
+  <script src="../../../_static/js/jquery.appear.js"></script>
+  <script src="../../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 3 - Deploy Colors microservice on premises and expose it</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 3 - Deploy Colors microservice on premises and expose it"/>
+  <meta name="product" content="Workshop Volterra 10x"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2022-04-01 08:43:29"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="Workshop Volterra 10x" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 3 - Deploy Colors microservice on premises and expose it &#8212; Workshop Volterra 10x  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/index.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Lab 4 - Add WAAP protection" href="../lab4/lab4.html" />
+    <link rel="prev" title="Lab 2 - Deploy the app in Azure AKS and expose it on Volterra Global Network" href="../lab2/lab2.html" /> 
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      <!-- javascript code to maintain the sidebar scroll positon when loaded -->
+      <script type="text/javascript">
+        $(function() {
+          if (localStorage.tempScrollTop) {
+            $('#sidebar').scrollTop(localStorage.tempScrollTop);
+          }
+        });
+        $('#sidebar').on("scroll", function() {
+          localStorage.setItem("tempScrollTop", $('#sidebar').scrollTop());
+        });
+      </script>
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>Workshop Volterra 10x  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../class1/class1.html">Class1 - F5XC WAAP Use Cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../class2/class2.html">Class2 - F5XC WAAP Advanced Features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../class3.html">Class3 - Volterra Workshop for Modern App Specialists</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../module1.html">Module 1</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../lab1/lab1.html">Lab 1 - The Sentence Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab2/lab2.html">Lab 2 - Deploy the app in Azure AKS and expose it on Volterra Global Network</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Lab 3 - Deploy Colors microservice on premises and expose it</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab4/lab4.html">Lab 4 - Add WAAP protection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lab5/lab5.html">Lab 5 - Add GSLB for Front End Service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 3 - Deploy Colors microservice on premises and expose it</a><ul>
+<li><a class="reference internal" href="#deploy-colors-on-private-on-premises-aks">Deploy Colors on private on-premises AKS</a></li>
+<li><a class="reference internal" href="#configure-the-private-voltenode-in-udf">Configure the private VolteNode in UDF</a></li>
+<li><a class="reference internal" href="#discover-the-colors-service">Discover the Colors service</a></li>
+<li><a class="reference internal" href="#expose-the-microservice-with-f5-distributed-cloud">Expose the microservice with F5 Distributed Cloud</a></li>
+</ul>
+</li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../../index.html">Workshop Volterra 10x</a>
+              &gt; <a href="../../class3.html">Class3 - Volterra Workshop for Modern App Specialists</a>
+              &gt; <a href="../module1.html">Module 1</a>
+
+          <span class="right">
+             <a href="../../../_sources/class3/module1/lab3/lab3.rst.txt" rel="nofollow">Source</a> |
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-3-deploy-colors-microservice-on-premises-and-expose-it">
+<h1>Lab 3 - Deploy Colors microservice on premises and expose it<a class="headerlink" href="#lab-3-deploy-colors-microservice-on-premises-and-expose-it" title="Permalink to this headline">¶</a></h1>
+<img alt="../../../_images/archi-lab3.png" class="align-center" src="../../../_images/archi-lab3.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="deploy-colors-on-private-on-premises-aks">
+<h2>Deploy Colors on private on-premises AKS<a class="headerlink" href="#deploy-colors-on-private-on-premises-aks" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">In UDF, connect to <code class="docutils literal notranslate"><span class="pre">Jumphost</span></code> (<code class="docutils literal notranslate"><span class="pre">SSH</span></code> prefered, if you select <code class="docutils literal notranslate"><span class="pre">WEB</span> <span class="pre">SHELL</span></code>, move to folder /home/ubuntu) and run the Colors microservice manifest to deploy it into the private k8s. In order to test cross namespace service publication, we will deploy Colors service in <code class="docutils literal notranslate"><span class="pre">api</span></code> namespace.</p>
+<div class="highlight-terminal notranslate"><div class="highlight"><pre><span></span>kubectl create ns api
+kubectl apply -f /home/ubuntu/k8s-deployment/aks-sentence-colors.yaml -n api
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As you can notice, the Colors microservice is published as a NodePort</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="configure-the-private-voltenode-in-udf">
+<h2>Configure the private VolteNode in UDF<a class="headerlink" href="#configure-the-private-voltenode-in-udf" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In this location (UDF), the Voltnode will be deployed as Single NIC.</p>
+</div>
+<ul class="simple">
+<li>Connect to the Volterra Node UI (admin/Volterra123)</li>
+<li>Do not change the password, go directly to <code class="docutils literal notranslate"><span class="pre">Dashboard</span></code></li>
+<li>Click Configure Now<ul>
+<li>If you haven’t created a site token in Volt Console, do it Now</li>
+<li>Fill all the fields as you want, but select <code class="docutils literal notranslate"><span class="pre">kvm-voltmesh</span></code> (Single NIC)</li>
+<li>Do not set any Latitude/Longitude, we will do it in the VoltConsole</li>
+<li>Save configuration</li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If nothing happens when you click SAVE, open the browser console, and check the error. Looks like there is a UI bug, and you need to check the box <code class="docutils literal notranslate"><span class="pre">IP</span> <span class="pre">Settings</span> <span class="pre">Configuration</span></code>.</p>
+</div>
+<ul class="simple">
+<li>Come back to VoltConsole, and accept the registration. Add some coordonates (the ones you want)</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Wait for the node to be GREEN, upgrade the node if required.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="discover-the-colors-service">
+<h2>Discover the Colors service<a class="headerlink" href="#discover-the-colors-service" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Create a service discovery</p>
+<ul class="simple">
+<li>Select your site, upload the kubeconfig file from the jumphost (/.kube/config)</li>
+<li>Select <code class="docutils literal notranslate"><span class="pre">Site</span> <span class="pre">Local</span> <span class="pre">Network</span></code> because the VoltNode is a single NIC node.</li>
+<li>In <code class="docutils literal notranslate"><span class="pre">VIP</span> <span class="pre">Publishing</span> <span class="pre">Configuration</span> <span class="pre">settings</span></code>, Don’t forget to <code class="docutils literal notranslate"><span class="pre">publish</span> <span class="pre">fully</span> <span class="pre">qualified</span> <span class="pre">domain</span> <span class="pre">to</span> <span class="pre">VIP</span> <span class="pre">mapping</span></code></li>
+</ul>
+<img alt="../../../_images/sd1.png" class="align-center" src="../../../_images/sd1.png" />
+</li>
+<li><p class="first">You should see <code class="docutils literal notranslate"><span class="pre">Colors</span></code> service as a NodePort in the discovered services.</p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This can take several minutes to discover services.</p>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="expose-the-microservice-with-f5-distributed-cloud">
+<h2>Expose the microservice with F5 Distributed Cloud<a class="headerlink" href="#expose-the-microservice-with-f5-distributed-cloud" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Create an Origin Pool targeting the discovered <code class="docutils literal notranslate"><span class="pre">Colors</span></code> service</p>
+<ul class="simple">
+<li>Type <code class="docutils literal notranslate"><span class="pre">k8s</span> <span class="pre">service</span></code></li>
+<li>Service name : the service name discovered</li>
+<li>Site : your UDF site</li>
+<li>Tip : Select Outside Network</li>
+<li>Port 80</li>
+</ul>
+<img alt="../../../_images/op.png" class="align-center" src="../../../_images/op.png" />
+</li>
+<li><p class="first">Create an Internal LB, so that the Generator can reach the Colors service</p>
+<ul>
+<li><p class="first">FYI, the generator targets this fqdn <code class="docutils literal notranslate"><span class="pre">sentence-colors.default</span></code></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Team discussion: How does Generator pod in Azure AKS can find Colors service running in UDF k8S ?</p>
+</div>
+</li>
+<li><p class="first">Publish this LB on the <code class="docutils literal notranslate"><span class="pre">Azure</span> <span class="pre">Site</span></code> so that the AKS is updated with a new service <code class="docutils literal notranslate"><span class="pre">sentence-colors.default</span></code></p>
+</li>
+<li><p class="first">Check you AKS services</p>
+</li>
+</ul>
+<img alt="../../../_images/lb.png" class="align-center" src="../../../_images/lb.png" />
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">❯ kubectl get services</span>
+<span class="go">NAME                      TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE</span>
+<span class="go">kubernetes                ClusterIP   10.0.0.1       &lt;none&gt;        443/TCP        4h25m</span>
+<span class="go">sentence-adjectives       ClusterIP   10.0.250.106   &lt;none&gt;        80/TCP         4h19m</span>
+<span class="go">sentence-animals          ClusterIP   10.0.14.187    &lt;none&gt;        80/TCP         4h19m</span>
+<span class="go">sentence-backgrounds      ClusterIP   10.0.52.39     &lt;none&gt;        80/TCP         4h19m</span>
+<span class="hll"><span class="go">sentence-colors           ClusterIP   None           &lt;none&gt;        80/TCP         10m</span>
+</span><span class="go">sentence-frontend-nginx   NodePort    10.0.61.130    &lt;none&gt;        80:30202/TCP   4h19m</span>
+<span class="go">sentence-generator        ClusterIP   10.0.16.217    &lt;none&gt;        80/TCP         4h19m</span>
+<span class="go">sentence-locations        ClusterIP   10.0.59.8      &lt;none&gt;        80/TCP         4h19m</span>
+
+<span class="go">❯ kubectl describe svc sentence-colors</span>
+<span class="go">Name:              sentence-colors</span>
+<span class="go">Namespace:         default</span>
+<span class="go">Labels:            &lt;none&gt;</span>
+<span class="go">Annotations:       ves.io/discoveryCreator: 16d81643-3f37-4d6d-8009-8fa82d95484b</span>
+<span class="go">Selector:          &lt;none&gt;</span>
+<span class="go">Type:              ClusterIP</span>
+<span class="go">IP Families:       &lt;none&gt;</span>
+<span class="go">IP:                None</span>
+<span class="go">IPs:               None</span>
+<span class="go">Port:              80  80/TCP</span>
+<span class="go">TargetPort:        80/TCP</span>
+<span class="hll"><span class="go">Endpoints:         10.240.0.6:80</span>
+</span><span class="go">Session Affinity:  None</span>
+<span class="go">Events:            &lt;none&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As you can notice, Volterra added a new service <code class="docutils literal notranslate"><span class="pre">sentence-colors.default</span></code> in AKS so that AKS knows this service is exposed by the Volterra Node (10.240.0.6). This LB routes traffic to the Origin Pool in UDF.</p>
+</div>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="../lab2/lab2.html" title="Lab 2 - Deploy the app in Azure AKS and expose it on Volterra Global Network" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="../lab4/lab4.html" title="Lab 4 - Add WAAP protection" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../../_static/js/index.js"></script>
+  <script src="../../../_static/js/jquery.appear.js"></script>
+  <script src="../../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>
