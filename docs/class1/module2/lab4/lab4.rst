@@ -11,6 +11,33 @@ In this lab, we will disable these 2 signatures so that the attack is not blocke
   * Change the value for "enabled" from ``true`` to ``false``
   * Do it for the 2 signature IDs
 
+    .. code-block:: json
+
+        {
+            "modifications": [
+                {
+                    "entityChanges": {
+                        "enabled": false
+                    },
+                    "entity": {
+                        "signatureId": 200001475
+                    },
+                    "entityType": "signature",
+                    "action": "add-or-update"
+                },
+                {
+                    "entityChanges": {
+                        "enabled": false
+                    },
+                    "entity": {
+                        "signatureId": 200000098
+                    },
+                    "entityType": "signature",
+                    "action": "add-or-update"
+                }
+            ]
+        }
+
 * As in the previous lab, commit your change, and push your change to GitHub
 * Run your Terraform plan again
 
