@@ -1,81 +1,70 @@
-Lab 1 - Apply Shape Bot Defense protection
-##########################################
+Lab 1 - Build and push the Nginx App Protect docker image
+#########################################################
 
-In the first module, we created and applied a WAAP policy with the Basic Bot Protection. This protection is based on Bot Signature only. There is no JS or challenge sent to the source.
+In order to expose the Sentence Application, we will deploy a NAP as a POD (not Ingress) in order to expose and protect the Sentence Application.
 
-**F5XC Shape Bot Protection** is the connector (similar to Shape IBD on BIG-IP) in order to inject the famous Shape JS and collect device signals. Then, Shape infrastructure allows or denies access to the application
+The docker image will stay static. It means, we don't want to re-build a new image everytime a config update is done. It means configuration files will be imported from a source of truth (Github). A configuration update is:
 
-.. image:: ../pictures/lab1/IBD.png
-   :align: center
-
-|
-
-Enable Shape Bot Protection on protected endpoints
-**************************************************
-
-In the previous lab, we managed to query and buy stocks from a CURL command. This CURL targeted the endpoint ``/trading/rest/buy_stocks.php`` and bought F5 stocks.
-
-Now, let's protect this endpoint so that the CURL will be blocked, but not the legetimate requests from a browser.
-
-* Edit your HTTPS LB from lab 1 (HTTPS LB on RE only) - Or any other if you prefer.
-* Enable ``Bot Defense``
-* Select US (EU not yet available) and ``Show Advanced Fields``
-* Extend ``Timeout`` to 1500 (because pipelines located in US)
-
-* Create a new ``Bot Defense Policy``
-* Create a new ``Protected App Endpoints``
-* Add a new item and configure as below. This is the Buy Stock URL.
+* A new application exposed (nginx.conf)
+* A NAP policy update (signature, violation exception ...)
 
 |
 
-  .. image:: ../pictures/lab1/rule.png
+Create the Azure Container Registry secret in AKS
+*************************************************
+
+The NAP image is a private image. You are not allowed to push this image in a public repo. It means, your AKS needs to know how to connect to this private registry.
+
+In Azure Container Registry, it is stray forward:
+
+* Connect to your Azure Portal and go to your Container Registry
+* Go to ``Access keys`` menu and copy the ``username`` and the first ``password``
+
+  .. image:: ../pictures/lab1/creds.png
      :align: center
-     :scale: 50%
 
-* Save and keep default settings for the JS injection
-* Save and Apply your HTTP LB
-
-|
-
-Test your Bot Defense Protection
-********************************
-
-* Connect to your HTTPS LB with a browser (incognito - private mode) and buy new stocks
-* Now, run the below CURL 
-
-  * For Mac Users
+* Create the k8s secret
 
   .. code-block:: bash
 
-    curl 'https://<TO_BE_REPLACED_BY_YOUR_FQDN>/trading/rest/buy_stocks.php' \
-    -H 'authorization: Basic YWRtaW46aWxvdmVibHVl' \
-    -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36' \
-    -H 'content-type: application/json; charset=UTF-8' \
-    -H 'x-requested-with: XMLHttpRequest' \
-    --data-raw '{"trans_value":330,"qty":2,"company":"FFIV","action":"buy","stock_price":165}' \
-    --compressed    
+    kubectl create secret docker-registry secret-azure-acr --namespace sentence --docker-server=<your_registry>.azurecr.io --docker-username=<username-generated> --docker-password=<password-generated>
 
-  * For Windows Users
+* Check the secret is created
 
   .. code-block:: bash
 
-    curl --location --request POST "https://<TO_BE_REPLACED_BY_YOUR_FQDN>/trading/rest/buy_stocks.php" --header "authorization: Basic YWRtaW46YWRtaW4uRjVkZW1vLmNvbQ==" --header "user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36" --header "content-type: application/json; charset=UTF-8" --header "x-requested-with: XMLHttpRequest" --header "Cookie: 3ba01=3b7f08b7c6ff531030e6f43656582f0b000004c246698307ddbe" --data-raw "{\"trans_value\": 330,\"qty\": 2,\"company\": \"FFIV\",\"action\": \"buy\",\"stock_price\": 165}"
+   ❯ kubectl get secret -n sentence
+   NAME                  TYPE                                  DATA   AGE
+   default-token-xhmzs   kubernetes.io/service-account-token   3      6d5h
+   secret-azure-acr      kubernetes.io/dockerconfigjson        1      6d5h
 
-
-* The call should be blocked
+.. note:: Your AKS is now able to download docker image from your Azure Container Registry
 
 |
 
-Check your analytics
-********************
+Build and push the Nginx App Protect docker image
+*************************************************
 
-* Now, go to your LB ``Security Analytics``
-* Go to ``Bot Traffic overview`` and check if you see a Human and Bot event logs
+* In ``/nginx-nap`` directory, copy your ``nginx-repo.crt`` and ``nginx-repo.key``
+* Modifty the ``entrypoint.sh`` script so it points to your GitHub repo
 
-  .. image:: ../pictures/lab1/analytics.png
-     :align: center
+  .. code-block:: bash
 
+    git clone --branch dev https://github.com/<YOUR_REPO>/devsecops-nap.git /tmp/devsecops/
 
-.. warning:: End of the SE/Partner/Customer F5XC WAAP foundational
+    ......
 
-   
+  .. note:: This script is ran at every boot. If you look at deeper in the script, you can see the script clone your GitHub repo in the nginx directory. It means the Nginx will run with the config files coming from the GitHub repo -> GitHub is our ``source of truth``
+
+* Build your docker image
+
+  .. code-block:: bash
+
+    DOCKER_BUILDKIT=1 docker build --no-cache --secret id=nginx-crt,src=nginx-repo.crt --secret id=nginx-key,src=nginx-repo.key -t <your_registry>.azurecr.io/nginx/nap:v1.0 .
+
+* Push your NAP image into your private registry
+
+  .. code-block:: bash
+
+    docker push <your_registry>.azurecr.io/nginx/nap:v1.0
+

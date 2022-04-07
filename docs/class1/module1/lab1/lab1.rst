@@ -89,4 +89,12 @@ Connect your Docker engine and Kuebctl context with Azure
 
     az aks get-credentials --resource-group <xxx-aks-xxx-rg> --name <yyyyy-lab-devsecops> --file kubeconfig-aks
 
+* Merge or use this Kubeconfig file so that you can use your favorite k8s tool
+
+   * Kubectl
+   * Lens
+   * k9s ...
+
+.. note:: At least, run this command to be sure your kubectl is connected to your AKS context ``kubectl get nodes``
+
    

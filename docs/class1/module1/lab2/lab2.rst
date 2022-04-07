@@ -1,45 +1,57 @@
-Lab 2 - Expose the public application
-#####################################
+Lab 2 - Deploy the demo application
+###################################
 
-Create the networking objects
-*****************************
+The application used in this workshop is very simple to understand. It generates a sentence with 4 words coming from 4 differente microservices.
 
-For this lab, we will use the following object naming convention
+You can find more details here : https://github.com/MattDierick/sentence-generator-app
 
-.. table:: Naming Convention
-   :widths: auto
-
-   ===============    ========================================================================================
-   Object               Value
-   ===============    ========================================================================================
-   HTTP LB              **EMEA-SE** tenant : https://arcadia-<se_name>.emea-ent.f5demos.com
-                        
-                        **F5-SALES-PUBLIC** tenant : https://arcadia-<student_number>.sales-public.f5demos.com
-                        
-                        Enable HTTPS AutoCert
-
-   Origin Pool          https://arcadia.emea.f5se.com
-
-                        Port 443 
-
-                        Enable TLS
-
-                        Disable TLS Verification
-   ===============    ========================================================================================
-
-* Check you are in your Namespace
-* Create the Origin Pool targeting Arcadia public app
-* Create the HTTPS LB
-
-.. warning:: Disable TLS verification in the Origin Pool because the certification on https://arcadia.emea.f5se.com does not contain the Cert Chain.
+.. image:: ../pictures/lab2/app.png
+   :align: center
 
 |
 
-Test your Anycast HTTPS LB
-**************************
+Deploy the application in your AKS
+**********************************
 
-* Check your Arcadia application is exposed and reachable from the F5XC Global Network
+* Go to ``k8s-deployment`` directory
+  
+* Create the ``sentence`` namespace
+  
+  .. code-block:: bash
+     
+     kubectl create ns sentence
 
-.. note:: So far, Arcadia is not protected but exposed all over the world on all F5XC RE.
+* Deploy the 2 manifests in ``sentence`` namespace
 
-.. warning:: Some Service Providers have a very long recursive cache. It can take several minutes to get a DNS response. You can change your DNS server to 1.1.1.1 or 8.8.8.8 to fix that.
+  .. code-block:: bash
+      
+     kubectl create ns sentence
+     kubectl apply -f aks-sentence-deployment.yaml -n sentence
+     kubectl apply -f aks-sentence-deployment-nginx-nolb.yaml -n sentence
+
+.. note:: At this stage, we can considere DevOps pushed a new application in the Azure Kubernetes, and SecOps will have to expose this application with a Nginx App Protect.
+
+* Check all pods and services are up and running
+
+  .. code-block:: bash
+
+     ❯ kubectl get pods -n sentence
+      NAME                                       READY   STATUS    RESTARTS   AGE
+      sentence-adjectives-5558f7d7d9-dkj58       1/1     Running   0          6d4h
+      sentence-animals-6496766bc8-x5f4n          1/1     Running   0          6d5h
+      sentence-backgrounds-5f784ffd-vd6d6        1/1     Running   0          6d5h
+      sentence-colors-5c4c4f8b89-785tb           1/1     Running   0          6d5h
+      sentence-frontend-nginx-6fc654698c-ktgfc   1/1     Running   0          6d5h
+      sentence-generator-54b5687b54-nrf7h        1/1     Running   0          6d5h
+      sentence-locations-bd85f5b7-9bt4n          1/1     Running   0          6d4h
+
+     ❯ kubectl get services -n sentence
+      NAME                      TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)        AGE
+      sentence-adjectives       ClusterIP      10.0.175.176   <none>          80/TCP         6d5h
+      sentence-animals          ClusterIP      10.0.163.130   <none>          80/TCP         6d5h
+      sentence-backgrounds      ClusterIP      10.0.71.153    <none>          80/TCP         6d5h
+      sentence-colors           ClusterIP      10.0.160.97    <none>          80/TCP         6d5h
+      sentence-frontend-nginx   ClusterIP      10.0.36.129    <none>          80/TCP         6d5h
+      sentence-generator        ClusterIP      10.0.218.182   <none>          80/TCP         6d5h
+      sentence-locations        ClusterIP      10.0.98.74     <none>          80/TCP         6d4h
+
