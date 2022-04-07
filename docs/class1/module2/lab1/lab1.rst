@@ -1,57 +1,70 @@
-Lab 1 - Expose the private Arcadia application
-##############################################
+Lab 1 - Build and push the Nginx App Protect docker image
+#########################################################
 
-Create the networking objects
-*****************************
+In order to expose the Sentence Application, we will deploy a NAP as a POD (not Ingress) in order to expose and protect the Sentence Application.
 
-For this lab, we will use the following object naming convention
+The docker image will stay static. It means, we don't want to re-build a new image everytime a config update is done. It means configuration files will be imported from a source of truth (Github). A configuration update is:
 
-.. table:: Naming Convention
-   :widths: auto
+* A new application exposed (nginx.conf)
+* A NAP policy update (signature, violation exception ...)
 
-   ===============    ========================================================================================
-   Object               Value
-   ===============    ========================================================================================
-   HTTP LB              **EMEA-SE** tenant : https://arcadia-<se_name>.emea-ent.f5demos.com
-                        
-                        **F5-SALES-PUBLIC** tenant : https://arcadia-<student_number>.sales-public.f5demos.com
+|
 
-                        Enable HTTPS AutoCert
+Create the Azure Container Registry secret in AKS
+*************************************************
 
-   Origin Pool          Select ``IP Address of OP on Given site``
+The NAP image is a private image. You are not allowed to push this image in a public repo. It means, your AKS needs to know how to connect to this private registry.
 
-                        IP ``172.21.2.4``
-   
-                        Site for **EMEA-SE tenant** ``demo-waap-emea``
+In Azure Container Registry, it is stray forward:
 
-                        Site for **F5-SALES-PUBLIC tenant** ``emea-azure-waap``
-   
-                        Select ``Inside Network``
+* Connect to your Azure Portal and go to your Container Registry
+* Go to ``Access keys`` menu and copy the ``username`` and the first ``password``
 
-                        Port 80
-
-                        NO TLS
-   ===============    ========================================================================================
-
-* Check you are in your Namespace
-* Create the Origin Pool targeting Arcadia private IP on given site
-
-  .. image:: ../pictures/lab1/OP.png
+  .. image:: ../pictures/lab1/creds.png
      :align: center
 
-* Create the HTTPS LB
-* Assigned the  WAAP policy created in previous LAB
+* Create the k8s secret
 
+  .. code-block:: bash
 
+    kubectl create secret docker-registry secret-azure-acr --namespace sentence --docker-server=<your_registry>.azurecr.io --docker-username=<username-generated> --docker-password=<password-generated>
+
+* Check the secret is created
+
+  .. code-block:: bash
+
+   ❯ kubectl get secret -n sentence
+   NAME                  TYPE                                  DATA   AGE
+   default-token-xhmzs   kubernetes.io/service-account-token   3      6d5h
+   secret-azure-acr      kubernetes.io/dockerconfigjson        1      6d5h
+
+.. note:: Your AKS is now able to download docker image from your Azure Container Registry
 
 |
 
-Test your Anycast HTTPS LB
-**************************
+Build and push the Nginx App Protect docker image
+*************************************************
 
-* Check your Arcadia application is exposed and reachable from the F5XC Global Network
-* Send Attacks as previous lab
+* In ``/nginx-nap`` directory, copy your ``nginx-repo.crt`` and ``nginx-repo.key``
+* Modifty the ``entrypoint.sh`` script so it points to your GitHub repo
 
-|
+  .. code-block:: bash
 
-.. note:: In this lab, you created a Multi-Cloud architecture where the application resides in a private location. And SecOps don't have to know where is the app and how to reach this app. NetOps created the relevant Network Infrastrucute (Mesh Node) and SecOps just consume the objects created by NetOps.
+    git clone --branch dev https://github.com/<YOUR_REPO>/devsecops-nap.git /tmp/devsecops/
+
+    ......
+
+  .. note:: This script is ran at every boot. If you look at deeper in the script, you can see the script clone your GitHub repo in the nginx directory. It means the Nginx will run with the config files coming from the GitHub repo -> GitHub is our ``source of truth``
+
+* Build your docker image
+
+  .. code-block:: bash
+
+    DOCKER_BUILDKIT=1 docker build --no-cache --secret id=nginx-crt,src=nginx-repo.crt --secret id=nginx-key,src=nginx-repo.key -t <your_registry>.azurecr.io/nginx/nap:v1.0 .
+
+* Push your NAP image into your private registry
+
+  .. code-block:: bash
+
+    docker push <your_registry>.azurecr.io/nginx/nap:v1.0
+

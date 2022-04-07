@@ -1,5 +1,5 @@
-Class1 - F5XC WAAP Use Cases
-############################
+Class1 - Learn DevSecOps in Azure with Terraform and GitHub
+###########################################################
 
 Lab Maintainers:
 
@@ -7,9 +7,6 @@ Lab Maintainers:
 
 |
 
-.. note:: In this Class, you will focus mainly on the deployment models. You are going to see how you can deploy F5XC WAAP in many environments.
-
-|
 
 .. toctree::
    :maxdepth: 2

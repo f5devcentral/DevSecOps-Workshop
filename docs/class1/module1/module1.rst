@@ -1,20 +1,15 @@
-Module 1 - Use Case 1 - Expose public application and protect it with F5XC WAAP
-###############################################################################
+Module 1 - Prepare your environment
+###################################
 
-In this section, we will expose an existing and public internet facing application through F5XC Global Network.
+In this module, we will deploy the environment in your Azure subscription
 
-The use case is simple:
+* Azure Container Registry to store you Nginx App Protect docker image
+* Azure Kubernetes Cluster where we will deploy and application and a Nginx App Protect (as a pod)
 
-* An application is already up and running somewhere (Datacenter, public cloud ...)
-* This application has a public IP address or FQDN
-* We will use and leverage the F5XC Global Network to expose this application
-* The application will be available everywhere though all F5XC Regional Edge locations
-* We will apply a WAAP policy
+Then, we wil deploy a simple but modern application in AKS. More details on this app here : https://github.com/MattDierick/sentence-generator-app
 
-Today (Feb 2022), the worldwide POPs map is as below
 
-.. image:: ./pictures/map.png
-   :align: center
+
 
 **Module 1 - All sections**
 
