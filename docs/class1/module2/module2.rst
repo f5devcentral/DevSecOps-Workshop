@@ -7,6 +7,9 @@ In this module, we will deploy the Nginx App Protect in your AKS environment
 * Deploy NAP image by simulating a CI pipeline
 * Modify some NAP configuration settings and simulate a CI pipeline
 
+.. image:: ./pictures/archi1.jpg
+   :scale: 50
+   :align: center
 
 **Module 2 - All sections**
 
