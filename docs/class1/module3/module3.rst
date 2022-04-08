@@ -5,7 +5,11 @@ In this section, we will run a real and full DevSecOps workflow when SecOps need
 
 In this section, when a SecOps will make/commit and change in the source of truth (GitHub), the CI tool with runa pipeline to rolling-update the NAP automatically.
 
-**Module 2 - All sections**
+.. image:: ./pictures/archi2.png
+   :scale: 50
+   :align: center
+
+**Module 3 - All sections**
 
 .. toctree::
    :maxdepth: 1
