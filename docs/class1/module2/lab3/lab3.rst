@@ -49,6 +49,7 @@ Modify the WAF blocking page
 
 * Make a quick look in your GitHub repo, dev branch, you should see your change here (the reponse blocking page change)
 
+|
 
 Simulate a CI pipeline execution
 ********************************
