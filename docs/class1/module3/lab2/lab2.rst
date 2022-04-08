@@ -10,5 +10,7 @@ It is time to test our full DevSecOps implementation. As a SecOps, we will now m
 * That's it :) Look at your TF Cloud runs and you should see a new run in progress and in your AKS a new pod up and running.
 
 .. image:: ../pictures/lab2/runs.png
+   :scale: 50
    :align: center
 
+.. note:: Congrats, as you may notice, with few efforts, we deployed a CI thanks to Terraform Cloud, but we could have used Microsoft DevOps, Github Actions, Jenkins, Gitlab CI ... 
