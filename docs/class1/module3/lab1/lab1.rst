@@ -22,6 +22,7 @@ Prepare your Teraform Cloud account
 
     * In the next screen, open ``advanced options``
     * Set ``Terraform Working Directory`` to ``/terraform``. This is where the plan.rf is located
+    * Set ``Automatic Run Trigerring`` to ``Always``
     * Set the VCS branch to ``tf_cloud``. We will use a dedicated branch for this module in order to keep 2 ways to do your demo/test (manual with Dev and CI with tf_cloud)
 
       .. image:: ../pictures/lab1/adv-option.png
