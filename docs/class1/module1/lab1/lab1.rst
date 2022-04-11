@@ -56,12 +56,23 @@ This terraform creates 3 Resource Groups:
 .. image:: ../pictures/lab1/RG.png
    :align: center
 
+* Collect the outputs (save them) for later actions
+
+  .. code-block:: bash
+
+    terraform output client_certificate
+    terraform output client_key
+    terraform output cluster_ca_certificate
+    terraform output acr_server
+    terraform output acr_username
+    terraform output acr_password
+
 |
 
 Connect your Docker engine and Kubectl context with Azure
 *********************************************************
 
-* In your Azure Portal, find your ACR. Its name is acr<prefix>, the prefix has been set in the ``parameters.tfvars``
+* In your Azure Portal, you can see your ACR. Its name is acr<prefix>, the prefix has been set in the ``parameters.tfvars``
 * Connect your docker engine with Azure Container Registry ``acr<prefix>.azurecr.io``
 
   .. image:: ../pictures/lab1/acr.png
@@ -83,11 +94,11 @@ Connect your Docker engine and Kubectl context with Azure
    WARNING! Using --password via the CLI is insecure. Use --password-stdin.
    Login Succeeded
 
-* Download your kubeconfig file from Azure Kubernetes. You can retrieve the new of the resource group and cluster in your Azure Portal, or by checking your ``parameters.tfvars`` file.
+* Save your kubeconfig file in a file
 
   .. code-block:: bash
 
-    az aks get-credentials --resource-group <xxx-aks-xxx-rg> --name <yyyyy-lab-devsecops> --file kubeconfig-aks
+    terraform output kube_config
 
 * Merge or use this Kubeconfig file so that you can use your favorite k8s tool
 
