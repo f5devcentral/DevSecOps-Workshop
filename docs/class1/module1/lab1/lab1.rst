@@ -58,7 +58,7 @@ This terraform creates 3 Resource Groups:
 
 |
 
-Connect your Docker engine and Kuebctl context with Azure
+Connect your Docker engine and Kubectl context with Azure
 *********************************************************
 
 * In your Azure Portal, find your ACR. Its name is acr<prefix>, the prefix has been set in the ``parameters.tfvars``
