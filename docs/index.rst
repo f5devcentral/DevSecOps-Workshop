@@ -30,6 +30,10 @@ It covers:
   * Terraform as infra and config as code
   * Terraform Cloud as a CI
 
+.. image:: ./pictures/archi2.png
+   :scale: 50
+   :align: center
+
 Pre-reqs:
 
 * An Azure tenant with the subscription
@@ -37,7 +41,10 @@ Pre-reqs:
 * Kubectl CLI and/or k8s tools like Lens/k9s
 * Nginx App Protect license
 * Terraform
-* Docker desktop
+* Docker desktop or CE
+  
+  * As a reminder, Docker Desktop is not free anymore for organizations
+  * For F5ers, you can learn how to install Docker CE on Mac and Windows here https://f5.sharepoint.com/sites/CoP-ModernApps/SitePages/replace-Docker-Desktop-on-macOS-and-Windows.aspx  
 
 .. toctree::
    :maxdepth: 3
