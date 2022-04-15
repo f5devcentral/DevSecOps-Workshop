@@ -31,6 +31,7 @@ It covers:
   * Terraform Cloud as a CI
 
 .. image:: ./pictures/archi2.png
+   :scale: 50
    :align: center
 
 Pre-reqs:
