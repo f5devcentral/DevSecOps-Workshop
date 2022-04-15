@@ -30,6 +30,9 @@ It covers:
   * Terraform as infra and config as code
   * Terraform Cloud as a CI
 
+.. image:: ./pictures/archi2.png
+   :align: center
+
 Pre-reqs:
 
 * An Azure tenant with the subscription
