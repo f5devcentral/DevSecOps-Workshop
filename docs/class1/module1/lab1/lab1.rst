@@ -35,7 +35,8 @@ Go to ``terraform/prep-env`` directory and run these commands:
      az login
      az account set --subscription <subscription-ID>
 
-* Edit the ``parameters.tfvars`` file with your own information
+* Go to ``prep-env`` folder
+* Edit the ``parameters.tfvars`` folder with your own information
 * Run the terraform plan. Type ``yes`` when prompted.
 
   .. code-block:: bash
@@ -62,7 +63,7 @@ This terraform creates 3 Resource Groups:
 
     terraform output client_certificate
     terraform output client_key
-    terraform output cluster_ca_certificate
+    terraform output cluster_ca_certificate  
     terraform output acr_server
     terraform output acr_username
     terraform output acr_password
@@ -83,16 +84,17 @@ Connect your Docker engine and Kubectl context with Azure
    TOKEN=$(az acr login --name <your_registry> --expose-token --output tsv --query accessToken)
    docker login <your_registry>.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password $TOKEN
 
-   Outcomes expected 
+Outcomes expected 
 
-   .. code-block:: bash
+  .. code-block:: bash
 
-   ❯ TOKEN=$(az acr login --name acrmdi.azurecr.io --expose-token --output tsv --query accessToken)
-   WARNING: The login server endpoint suffix '.azurecr.io' is automatically omitted.
-   WARNING: You can perform manual login using the provided access token below, for example: 'docker login loginServer -u 00000000-0000-0000-0000-000000000000 -p accessToken'
-   ❯ docker login acrmdi.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password $TOKEN
-   WARNING! Using --password via the CLI is insecure. Use --password-stdin.
-   Login Succeeded
+  ❯ TOKEN=$(az acr login --name acrmdi.azurecr.io --expose-token --output tsv --query accessToken)
+  WARNING: The login server endpoint suffix '.azurecr.io' is automatically omitted.
+  WARNING: You can perform manual login using the provided access token below, for example: 'docker login loginServer -u 00000000-0000-0000-0000-000000000000 -p accessToken'
+  
+  ❯ docker login acrmdi.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password $TOKEN
+  WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+  Login Succeeded
 
 * Save your kubeconfig file in a file
 
