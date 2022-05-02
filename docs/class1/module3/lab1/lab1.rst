@@ -3,6 +3,37 @@ Lab 1 - Connect to Terraform Cloud
 
 Terraform Cloud will be our CI. TF Cloud will check any change/commit done in GitHub and will execute the Terraform plan.
 
+Create a new NAP image for this lab
+***********************************
+
+In the previous lab, we created a NAP image. This image boots and run a dedicated script : ``entrypoint.sh`` If you remember well, we change this script to point to your DEV branch. So that NAP PULL all the config files from your source of truth (your Github Dev Branch)
+
+In this lab, we use a new branch ``tf_cloud``, so that you can keep both branches in your Github (for demo purpose). It means, we need to create another NAP image with a new image tag.
+
+* In ``/nginx-nap`` directory, copy your ``nginx-repo.crt`` and ``nginx-repo.key``
+* Modifty the ``entrypoint.sh`` script so it points to your GitHub repo
+
+  .. code-block:: bash
+
+    git clone --branch tf_cloud https://github.com/<YOUR_REPO>/devsecops-nap.git /tmp/devsecops/
+
+    ......
+
+  .. note:: This script is run at every boot. If you look at deeper in the script, you can see the script clones your GitHub repo (tf_cloud branch) in the nginx directory. It means the Nginx will run with the config files coming from the GitHub repo -> GitHub is our ``source of truth``
+
+* Build your docker image with a new tag ``tf_cloud``
+
+  .. code-block:: bash
+
+    DOCKER_BUILDKIT=1 docker build --no-cache --secret id=nginx-crt,src=nginx-repo.crt --secret id=nginx-key,src=nginx-repo.key -t <your_registry>.azurecr.io/nginx/nap:tf_cloud .
+
+* Push your NAP image into your private registry
+
+  .. code-block:: bash
+
+    docker push <your_registry>.azurecr.io/nginx/nap:tf_cloud
+
+
 Prepare your Teraform Cloud account
 ***********************************
 
@@ -97,7 +128,7 @@ In Module 1, when we created the AKS with Terraform, we did a Terraform Export. 
 * Modify this plan 
   
   * line 12 - with your AKS server URL. You can find this URL in your kubeconfig file.
-  * line 49 - with your ACR registry. You can retrieve this fqdn from the module 1. 
+  * line 49 - with your NAP docker image created earlier (tf_cloud tag)
 
 * Commit and push the change to your GitHub
 
@@ -109,3 +140,4 @@ At this moment, a first ``Run`` should start, as you committed your branch.
 * Go to ``Runs`` menu and look at the result.
 * Result must be ``Applied``
 
+* Note the new Nginx Azure LB IP address and change your host file accordingly. FYI, when we destroyed our Module2 lab, we destroyed as well the Nginx Azure LB.
