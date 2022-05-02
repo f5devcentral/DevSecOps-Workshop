@@ -1,7 +1,7 @@
 Lab 3 - Deploy an ECK with Logstash in your AKS
 ###############################################
 
-In order to visualize your security events, you can deploy an ECK (Elastic Cloud Kibanba) in your AKS. We will deploy logstash aslo to parse the syslog messages.
+In order to visualize your security events, you can deploy an ECK (Elastic Cloud Kibanba) in your AKS - this is an optional lab but it will be very useful for your next POC/demo ... We will deploy logstash aslo to parse the syslog messages.
 
 |
 
@@ -14,8 +14,8 @@ The current deployment is done manually but we have been working on an Helm char
 
   .. code-block:: bash
 
-     kubect apply -f all-in-one.yaml
-     kubect apply -f elasticsearch.yaml
+     kubectl create -f https://download.elastic.co/downloads/eck/2.1.0/crds.yaml
+     kubectl apply -f https://download.elastic.co/downloads/eck/2.1.0/operator.yaml
      kubectl create secret generic kibana-saved-objects-encrypted-key --from-literal=xpack.encryptedSavedObjects.encryptionKey=12345678901234567890123456789012
      kubectl apply -f kibana.yaml
      kubectl apply -f logstash-cm.yaml

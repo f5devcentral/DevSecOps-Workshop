@@ -25,15 +25,15 @@ In this module, we will not use any CI tool. You will be the CI tool and run the
 
 First, adapt the Terraform with your environment information
 
-* Modify the plan accordingly so that the image is pulled from your private repository (line 36)
-* and also point to your kubeconfig context (line 3)
+* Modify the plan accordingly so that the image is pulled from your private repository ``(line 36)``
+* and also point to your kubeconfig context ``(line 3)``
 
 Go to the ``terraform`` folder and execute the terraform plan
 
 .. code-block:: bash
 
   terraform init
-  terraform plan -auto-approve
+  terraform plan
   terraform apply -auto-approve
 
 |

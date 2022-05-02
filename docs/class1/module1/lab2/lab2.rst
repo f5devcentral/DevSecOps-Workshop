@@ -1,7 +1,7 @@
 Lab 2 - Deploy the demo application
 ###################################
 
-The application used in this workshop is very simple to understand. It generates a sentence with 4 words coming from 4 differente microservices.
+The application used in this workshop is very simple. It generates a sentence with 4 words coming from 4 different microservices.
 
 You can find more details here : https://github.com/MattDierick/sentence-generator-app
 
@@ -25,7 +25,6 @@ Deploy the application in your AKS
 
   .. code-block:: bash
       
-     kubectl create ns sentence
      kubectl apply -f aks-sentence-deployment.yaml -n sentence
      kubectl apply -f aks-sentence-deployment-nginx-nolb.yaml -n sentence
 

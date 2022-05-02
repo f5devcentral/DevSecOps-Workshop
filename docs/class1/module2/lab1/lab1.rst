@@ -17,11 +17,8 @@ The NAP image is a private image. You are not allowed to push this image in a pu
 
 In Azure Container Registry, it is stray forward:
 
-* Connect to your Azure Portal and go to your Container Registry
-* Go to ``Access keys`` menu and copy the ``username`` and the first ``password``
-
-  .. image:: ../pictures/lab1/creds.png
-     :align: center
+* In the first lab, we created the AKS (K8S) and the ACR (Container Registry). At the end of the lab, we did a Terraform Export in order to get the username, password and registry name.
+* Retrieve the ``username``, ``password`` and ``registry name`` from the Terraform Export
 
 * Create the k8s secret
 
@@ -54,7 +51,7 @@ Build and push the Nginx App Protect docker image
 
     ......
 
-  .. note:: This script is ran at every boot. If you look at deeper in the script, you can see the script clone your GitHub repo in the nginx directory. It means the Nginx will run with the config files coming from the GitHub repo -> GitHub is our ``source of truth``
+  .. note:: This script is run at every boot. If you look at deeper in the script, you can see the script clones your GitHub repo (dev branch) in the nginx directory. It means the Nginx will run with the config files coming from the GitHub repo -> GitHub is our ``source of truth``
 
 * Build your docker image
 
