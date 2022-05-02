@@ -27,7 +27,7 @@ In this lab, we use a new branch ``tf_cloud``, so that you can keep both branche
 
     DOCKER_BUILDKIT=1 docker build --no-cache --secret id=nginx-crt,src=nginx-repo.crt --secret id=nginx-key,src=nginx-repo.key -t <your_registry>.azurecr.io/nginx/nap:tf_cloud .
 
-* Push your NAP image into your private registry
+* Push your NAP image into your private registry. If requested, re-authenticate (module 1)
 
   .. code-block:: bash
 
