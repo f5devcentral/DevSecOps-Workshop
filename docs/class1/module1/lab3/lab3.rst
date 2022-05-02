@@ -14,8 +14,8 @@ The current deployment is done manually but we have been working on an Helm char
 
   .. code-block:: bash
 
-     kubectl apply -f all-in-one.yaml
-     kubectl apply -f elasticsearch.yaml
+     kubectl create -f https://download.elastic.co/downloads/eck/2.1.0/crds.yaml
+     kubectl apply -f https://download.elastic.co/downloads/eck/2.1.0/operator.yaml
      kubectl create secret generic kibana-saved-objects-encrypted-key --from-literal=xpack.encryptedSavedObjects.encryptionKey=12345678901234567890123456789012
      kubectl apply -f kibana.yaml
      kubectl apply -f logstash-cm.yaml
