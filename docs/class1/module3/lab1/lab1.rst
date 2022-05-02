@@ -94,7 +94,11 @@ In Module 1, when we created the AKS with Terraform, we did a Terraform Export. 
     cluster_ca_certificate = base64decode(var.cluster_ca_certificate)
     }
 
-* Modify this plan (line 12) with your AKS server URL. You can find this URL in your kubeconfig file. 
+* Modify this plan 
+  
+  * line 12 - with your AKS server URL. You can find this URL in your kubeconfig file.
+  * line 49 - with your ACR registry. You can retrieve this fqdn from the module 1. 
+
 * Commit and push the change to your GitHub
 
 Check your first pipeline execution
