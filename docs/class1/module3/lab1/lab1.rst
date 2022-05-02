@@ -51,7 +51,15 @@ A kubeconfig file contains 3 certs/keys
 * client certificate
 * client key
 
-Open you kubeconfig file (.kube/config) and locate this 3 certs/key. There are BASE64 encoded.
+In Module 1, when we created the AKS with Terraform, we did a Terraform Export. We exported several values
+
+* Retrieve your ``client cert``, ``client key`` and ``cluster CA cert``. If you haven't stored them, here are the commands.
+
+  .. code-bash:: bash
+
+     terraform output client_certificate
+     terraform output client_key
+     terraform output cluster_ca_certificate
 
 * Move to the ``Variable`` menu
 * Create these 3 variables of type ``Terraform variable``
@@ -92,7 +100,7 @@ Open you kubeconfig file (.kube/config) and locate this 3 certs/key. There are B
 Check your first pipeline execution
 ===================================
 
-At this moment, a first ``Run``should start, as you committed your branch.
+At this moment, a first ``Run`` should start, as you committed your branch.
 
 * Go to ``Runs`` menu and look at the result.
 * Result must be ``Applied``

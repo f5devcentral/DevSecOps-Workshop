@@ -88,13 +88,13 @@ Outcomes expected
 
   .. code-block:: bash
 
-  ❯ TOKEN=$(az acr login --name acrmdi.azurecr.io --expose-token --output tsv --query accessToken)
-  WARNING: The login server endpoint suffix '.azurecr.io' is automatically omitted.
-  WARNING: You can perform manual login using the provided access token below, for example: 'docker login loginServer -u 00000000-0000-0000-0000-000000000000 -p accessToken'
+    ❯ TOKEN=$(az acr login --name acrmdi.azurecr.io --expose-token --output tsv --query accessToken)
+    WARNING: The login server endpoint suffix '.azurecr.io' is automatically omitted.
+    WARNING: You can perform manual login using the provided access token below, for example: 'docker login loginServer -u 00000000-0000-0000-0000-000000000000 -p accessToken'
   
-  ❯ docker login acrmdi.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password $TOKEN
-  WARNING! Using --password via the CLI is insecure. Use --password-stdin.
-  Login Succeeded
+    ❯ docker login acrmdi.azurecr.io --username 00000000-0000-0000-0000-000000000000 --password $TOKEN
+    WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+    Login Succeeded
 
 * Save your kubeconfig file in a file
 

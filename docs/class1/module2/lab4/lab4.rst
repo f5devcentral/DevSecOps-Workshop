@@ -49,3 +49,12 @@ In this lab, we will disable these 2 signatures so that the attack is not blocke
 * Attack should pass and not be blocked
 
 .. note:: Congrats, you did your first DevSecOps operations. Now, let's do it for real, with real tools.
+
+.. note:: Before moving forward to the next lab, we need to clean-up our NAP deployment. Run a Terraform Destroy in order to destroy the NAP pod.
+
+    .. code-block:: bash
+
+        terraform destroy -auto-approve
+
+
+
