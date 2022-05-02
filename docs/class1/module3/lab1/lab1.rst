@@ -61,8 +61,6 @@ In Module 1, when we created the AKS with Terraform, we did a Terraform Export. 
      terraform output client_key
      terraform output cluster_ca_certificate
 
-
-
 * Move to the ``Variable`` menu
 * Create these 3 variables of type ``Terraform variable``
 
@@ -102,7 +100,7 @@ In Module 1, when we created the AKS with Terraform, we did a Terraform Export. 
 Check your first pipeline execution
 ===================================
 
-At this moment, a first ``Run``should start, as you committed your branch.
+At this moment, a first ``Run`` should start, as you committed your branch.
 
 * Go to ``Runs`` menu and look at the result.
 * Result must be ``Applied``
