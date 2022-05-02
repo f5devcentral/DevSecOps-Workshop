@@ -109,3 +109,4 @@ At this moment, a first ``Run`` should start, as you committed your branch.
 * Go to ``Runs`` menu and look at the result.
 * Result must be ``Applied``
 
+* Note the new Nginx Azure LB IP address and change your host file accordingly. FYI, when we destroyed our Module2 lab, we destroyed as well the Nginx Azure LB.
