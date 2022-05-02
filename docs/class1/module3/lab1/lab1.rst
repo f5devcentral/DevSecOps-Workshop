@@ -97,7 +97,7 @@ In Module 1, when we created the AKS with Terraform, we did a Terraform Export. 
 * Modify this plan 
   
   * line 12 - with your AKS server URL. You can find this URL in your kubeconfig file.
-  * line 49 - with your ACR registry. You can retrieve this fqdn from the module 1. 
+  * line 49 - with your NAP docker image. You can retrieve this fqdn from the module 1. 
 
 * Commit and push the change to your GitHub
 
